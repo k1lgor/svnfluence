@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SVNfluence</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Poppins font -->
+  </head>
+  <body class="bg-light d-flex flex-column min-vh-100">
+    <h1 class="text-neutral fw-bold header-title">SVNfluence</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+    <div
+      class="text-center p-4 flex-grow-1 d-flex flex-column justify-content-center align-items-center"
+    >
+      <p
+        class="text-muted mb-4 display-6"
+        style="font-family: 'Poppins', sans-serif"
+      >
+        Find SVN commands easily!
+      </p>
+      <form
+        action="/search"
+        method="post"
+        class="d-flex justify-content-center"
+      >
+        <div class="input-group w-65">
+          <!-- Kept w-75 to match the tagline width -->
+          <input
+            type="text"
+            name="query"
+            class="form-control form-control-lg"
+            placeholder="Ask about SVN..."
+            required
+          />
+          <button type="submit" class="btn btn-neutral">Search</button>
+        </div>
+      </form>
+    </div>
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+      <div class="container">
+        <span>© 2025 SVNfluence</span>
+        <a
+          href="https://github.com/k1lgor"
+          target="_blank"
+          class="text-white ms-2"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 19.13V22"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        body.classList.toggle("dark-theme");
+        const toggleBtn = document.querySelector(".theme-toggle");
+        if (body.classList.contains("dark-theme")) {
+          toggleBtn.textContent = "🌙"; // Moon for dark mode
+        } else {
+          toggleBtn.textContent = "🌞"; // Sun for light mode
+        }
+        localStorage.setItem(
+          "darkTheme",
+          body.classList.contains("dark-theme")
+        );
+      }
+      if (localStorage.getItem("darkTheme") === "true") {
+        document.body.classList.add("dark-theme");
+        document.querySelector(".theme-toggle").textContent = "🌙";
+      }
+    </script>
+  </body>
+</html>
