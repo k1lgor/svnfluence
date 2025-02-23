@@ -102,6 +102,37 @@ svnfluence/
 └── go.sum               # Go dependencies
 ```
 
+## 🐳 Docker
+
+Run SVNfluence in a container for easy deployment:
+
+### Prerequisites
+
+- **Docker**: Install Docker from [docker.com](https://www.docker.com/get-started)
+
+### Build and Run
+
+1. Build the Docker image:
+
+    ```bash
+    docker build -t svnfluence:latest .
+    ```
+
+2. Run the container with your OpenAI API key:
+
+    ```bash
+    docker run -d -p 8080:8080 -e OPENAI_API_KEY=your-api-key-here svnfluence:latest
+    ```
+
+### Health Check
+
+SVNfluence includes a health endpoint at `/health`. The Dockerfile includes a `HEALTHCHECK` to monitor the app:
+
+```dockerfile
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD curl -f http://localhost:8080/health || exit 1
+```
+
 ## ⚠️ License
 
 SVNfluence is open-source software licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
