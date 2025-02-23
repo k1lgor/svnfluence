@@ -1,0 +1,336 @@
+/* Root variables for light and dark themes */
+:root {
+  --bg-light: #f8f9fa; /* Light gray background */
+  --bg-dark: #212529; /* Dark gray background */
+  --text-light: #333; /* Dark text for light mode (unused here, but kept for consistency) */
+  --text-dark: #f8f9fa; /* Light text for dark mode (unused here, but kept for consistency) */
+  --primary: #007bff; /* Old blue, kept for reference but unused */
+  --success: #28a745; /* Green for commands, unchanged */
+  --neutral-light: #6c757d; /* Neutral gray for light mode */
+  --neutral-dark: #adb5bd; /* Lighter gray for dark mode */
+  --card-bg-light: #fff; /* White cards in light mode */
+  --card-bg-dark: #343a40; /* Dark gray cards in dark mode */
+  --card-border-light: #dee2e6; /* Light border */
+  --card-border-dark: #495057; /* Dark border */
+  --muted-light: #6c757d; /* Light gray for muted text */
+  --muted-dark: #adb5bd; /* Light gray for muted text in dark mode */
+}
+
+/* Default (light) theme */
+body {
+  background: linear-gradient(45deg, #f0f2f5, #e0e5ec);
+  font-family: "Arial", sans-serif;
+  color: var(--text-light);
+  transition: all 0.3s ease; /* Smooth transition for theme changes */
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Dark theme */
+body.dark-theme {
+  background: linear-gradient(45deg, #1a1e21, #2d333b);
+  color: var(--text-dark);
+}
+
+/* Gradient animation for background */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particle animation for background */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2); /* White, semi-transparent dots */
+  border-radius: 50%;
+  animation: wander 12s infinite ease-in-out; /* Faster at 12 seconds */
+}
+
+/* Particle animation: Random wandering movement */
+@keyframes wander {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.2);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(1);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(20px, -30px) scale(0.8);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Position particles randomly */
+body .particle-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+body .particle-2 {
+  top: 25%;
+  left: 70%;
+  animation-delay: 3s;
+}
+body .particle-3 {
+  top: 60%;
+  left: 30%;
+  animation-delay: 6s;
+}
+body .particle-4 {
+  top: 80%;
+  left: 90%;
+  animation-delay: 9s;
+}
+body .particle-5 {
+  top: 40%;
+  left: 50%;
+  animation-delay: 1.5s;
+}
+body .particle-6 {
+  top: 70%;
+  left: 20%;
+  animation-delay: 4.5s;
+}
+
+/* Apply particles to body */
+body .particle {
+  position: absolute;
+}
+
+/* Container and layout */
+.container {
+  max-width: 800px;
+}
+
+/* Typography */
+h1 {
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure "Usage" and "Examples" are visible in both themes */
+pre {
+  font-size: 1rem;
+  background-color: var(--card-bg-light); /* White in light mode (#fff) */
+  border: 1px solid var(--card-border-light);
+  overflow-x: auto;
+  color: #000000; /* Black text in light mode */
+}
+
+body.dark-theme pre {
+  background-color: var(--card-bg-dark); /* Dark gray in dark mode (#343a40) */
+  border: 1px solid var(--card-border-dark);
+  color: #ffffff; /* White text in dark mode for visibility */
+}
+
+/* Ensure list items (Examples) are visible in both themes */
+.list-group-item {
+  border: none;
+  background-color: var(--card-bg-light); /* White in light mode (#fff) */
+  transition: background-color 0.2s;
+  color: #000000; /* Black text in light mode */
+}
+
+body.dark-theme .list-group-item {
+  background-color: var(--card-bg-dark); /* Dark gray in dark mode (#343a40) */
+  color: #ffffff; /* White text in dark mode for visibility */
+}
+
+/* Card styling */
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--card-bg-light);
+  border: 1px solid var(--card-border-light);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s,
+    border-color 0.3s;
+}
+
+body.dark-theme .card {
+  background-color: var(--card-bg-dark);
+  border: 1px solid var(--card-border-dark);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-success {
+  color: var(--success) !important;
+}
+
+.text-dark {
+  color: var(--text-light) !important;
+}
+
+body.dark-theme .text-dark {
+  color: var(--text-dark) !important;
+}
+
+.text-muted {
+  color: var(--muted-light) !important;
+}
+
+body.dark-theme .text-muted {
+  color: var(--muted-dark) !important;
+}
+
+.text-neutral {
+  color: var(--neutral-light) !important;
+}
+
+body.dark-theme .text-neutral {
+  color: var(--neutral-dark) !important;
+}
+
+/* Neutral button styling */
+.btn-neutral {
+  background-color: var(--neutral-light);
+  border-color: var(--neutral-light);
+  color: var(--text-dark); /* White text for contrast */
+  padding: 8px 16px; /* Smaller padding for btn-sm */
+  font-weight: bold;
+}
+
+.btn-neutral:hover {
+  background-color: #5a6268; /* Darker neutral gray on hover */
+  border-color: #5a6268;
+  color: var(--text-dark);
+}
+
+body.dark-theme .btn-neutral {
+  background-color: var(--neutral-dark);
+  border-color: var(--neutral-dark);
+  color: var(--text-dark);
+}
+
+body.dark-theme .btn-neutral:hover {
+  background-color: #ced4da; /* Lighter neutral gray on hover in dark mode */
+  border-color: #ced4da;
+  color: var(--text-dark);
+}
+
+/* Smaller button for btn-sm */
+.btn-sm {
+  font-size: 0.875rem; /* Slightly smaller text */
+  padding: 6px 12px; /* Even smaller padding for tighter fit */
+}
+
+/* Primary button styling (unused, but kept for reference) */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Alert styling */
+.alert-warning {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #ffe0b3;
+  border-color: #ffbb66;
+}
+
+body.dark-theme .alert-warning {
+  background-color: #4a2c07;
+  border-color: #663d10;
+  color: var(--text-dark);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: var(--neutral-light);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #5a6268;
+}
+
+body.dark-theme .theme-toggle {
+  background-color: var(--neutral-dark);
+}
+
+body.dark-theme .theme-toggle:hover {
+  background-color: #ced4da;
+}
+
+/* Header title styling */
+.header-title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
+body.dark-theme .header-title {
+  color: var(--neutral-dark); /* Lighter gray in dark mode */
+}
+
+/* Footer styling */
+.footer {
+  background-color: #1a1a1a; /* Dark black like Gitfluence */
+  border-top: 1px solid #2d2d2d; /* Subtle border */
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer .text-white:hover {
+  color: #adb5bd; /* Lighter gray on hover for the GitHub icon */
+}
