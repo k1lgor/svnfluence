@@ -20,6 +20,10 @@ func NewHandlers(cfg *config.Config) *Handlers {
 	}
 }
 
+func (h *Handlers) healthCheck(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"status": "healthy"})
+}
+
 func (h *Handlers) searchHandler(c *gin.Context) {
 	query := c.PostForm("query")
 	command, err := h.openAIClient.GetCommand(query)
@@ -45,4 +49,5 @@ func SetupRoutes(r *gin.Engine, cfg *config.Config) {
 
 	r.GET("/", handlers.searchPage)
 	r.POST("/search", handlers.searchHandler)
+	r.GET("/health", handlers.healthCheck)
 }
