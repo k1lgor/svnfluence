@@ -34,5 +34,9 @@ ENV OPENAI_API_KEY=
 # Expose port 8080
 EXPOSE 8080
 
+# Health check for the application
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost:8080/health || exit 1
+
 # Run the binary
 CMD ["./svnfluence"]
