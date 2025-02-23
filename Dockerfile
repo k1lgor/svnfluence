@@ -21,8 +21,10 @@ RUN apk --no-cache add ca-certificates
 
 WORKDIR /app
 
-# Copy the binary from the builder stage
+# Copy the binary, templates, and static files from the builder stage
 COPY --from=builder /app/svnfluence .
+COPY --from=builder /app/templates/ templates/
+COPY --from=builder /app/static/ static/
 
 # Create a non-root user for security
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
@@ -30,6 +32,9 @@ USER appuser
 
 # Set environment variable for OpenAI API key (to be provided at runtime)
 ENV OPENAI_API_KEY=
+
+# Set GIN_MODE to release for production
+ENV GIN_MODE=release
 
 # Expose port 8080
 EXPOSE 8080
